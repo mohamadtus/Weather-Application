@@ -1,0 +1,17 @@
+{
+  "HOME": {
+    "CITY": "Ville",
+    "TEMPRATURE": "Température",
+    "WIND": "Vents",
+    "VISIBILITY": "Visibilité",
+    "DESCRIPTION": "Description",
+    "TODAY": "Météo d'aujourd'hui",
+    "WEATHER": "Météo",
+    "FEELS": "T. ressentie",
+    "PRESSURE": "Pression",
+    "FORCAST": "Prévisions",
+    "SORT": "Trier par",
+    "SELECT": "Choisir la langue",
+    "NAME": "Nom"
+  }
+}

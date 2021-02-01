@@ -1,0 +1,71 @@
+<div class='card'>
+  <div class='card-header'>
+    <div class="col-sm-4">
+      {{'HOME.FORCAST' | translate}} - {{this.city}}
+    </div>
+    <div class="col-sm-4">
+      <button class='btn btn-primary '
+              (click)='onBack()'
+              style='width:80px'>
+        <i class='fa fa-chevron-left'></i> Back
+      </button>
+    </div>
+  </div>
+  <div *ngIf='forcastWeather.list'>
+    <ng-container *ngFor='let forcast of this.forcastWeather.list'>
+      <div class='card-body  border-bottom border-secondary'
+           *ngIf="forcast.dt_txt.indexOf('09:00:00')!=-1"
+           [style.padding-bottom.px]='5'
+           [style.padding-top.px]='5'>
+        <div class='row '>
+          <div class='col-md-8'>
+            <div class='row'>
+              <div class='col-md-4 font-weight-bold'>{{forcast.dt_txt |
+                convertDate|titlecase}}</div>
+              <div class='col-md-8'></div>
+            </div>
+            <div class='row'>
+              <div class='col-md-4'>{{'HOME.TEMPRATURE' | translate}}:</div>
+              <div class='col-md-8'>{{forcast.main.temp| number:'1.0-0'}}℃</div>
+            </div>
+            <div class='row'>
+              <div class='col-md-4'>{{'HOME.FEELS' | translate}}:</div>
+              <div class='col-md-8'>{{forcast.main.feels_like| number:'1.0-0'}}℃
+              </div>
+            </div>
+            <div class='row'>
+              <div class='col-md-4'>{{'HOME.PRESSURE' | translate}}:</div>
+              <div class='col-md-8'>{{forcast.main.pressure}} hPa</div>
+            </div>
+            <div class='row'>
+              <div class='col-md-4'>{{'HOME.VISIBILITY' | translate}}:</div>
+              <div class='col-md-8'>{{forcast.visibility/1000 |
+                number:'1.0-0'}}km</div>
+            </div>
+            <div class='row'>
+              <div class='col-md-4'>{{'HOME.DESCRIPTION' | translate}}:</div>
+              <div class='col-md-8'>{{forcast.weather[0].description|titlecase}}
+              </div>
+            </div>
+            <div class='row'>
+              <div class='col-md-4'>{{'HOME.WIND' | translate}}:</div>
+              <div class='col-md-8'>{{forcast.wind.speed}}</div>
+            </div>
+
+          </div>
+
+          <div class='col-md-3'>
+            <img class='center-block img-responsive'
+                 [style.width.px]='200'
+                 [style.margin.px]='2'
+                 src="http://openweathermap.org/img/wn/{{forcast.weather[0].icon}}@2x.png"
+                 title="forcast.weather[0].description">
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <div class='card-footer'>
+
+  </div>
+</div>

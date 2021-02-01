@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand navbar-light bg-light">
+  <div class="col-sm-8">
+    <a class="navbar-brand">{{'HOME.WEATHER' | translate}}</a>
+  </div>
+  <div class="col-sm-4">
+    <label>
+      {{ 'HOME.SELECT' | translate }}
+      <select class="form-select"
+              #langselect
+              (change)="translate.use(langselect.value)"
+              (change)="onChange(langselect.value)">
+        <option *ngFor="let lang of translate.getLangs()"
+                [value]="lang">
+          {{ lang }}
+        </option>
+      </select></label>
+  </div>
+</nav>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

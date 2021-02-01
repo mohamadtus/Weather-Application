@@ -1,0 +1,47 @@
+<div class="card">
+  <div class="card-header">
+    {{'HOME.TODAY' | translate}}
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-4">{{this.today | convertDate|titlecase}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+      </div>
+    </div>
+    <div class='table-responsive-lg'>
+      <table class='table'
+             *ngIf='currentWeather.list'>
+        <thead>
+          <tr>
+            <th> {{'HOME.CITY' | translate}} </th>
+            <th>{{'HOME.TEMPRATURE' | translate}}</th>
+            <th>{{'HOME.WIND' | translate}}</th>
+            <th>{{'HOME.VISIBILITY' | translate}}</th>
+            <th>{{'HOME.DESCRIPTION' | translate }}</th>
+            <th> <button class='btn btn-primary'
+                      (click)='toggleSort()'>
+                {{'HOME.SORT' | translate}} {{sortByTemp? 'A-Z' : 'Temp'}}
+              </button></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let current of this.currentWeather.list'>
+            <td> <a [routerLink]="['/forcast', current.name]"> {{current.name}}
+              </a>
+            </td>
+            <td>{{current.main.temp | number:'1.0-0' }}℃</td>
+            <td>{{current.wind.speed | number:'1.0-1'}} m/s</td>
+            <td>{{current.visibility/1000 | number:'1.0-1' }} km</td>
+            <td>{{current.weather[0].description |titlecase}} </td>
+            <td><img
+                   src="http://openweathermap.org/img/wn/{{current.weather[0].icon}}@2x.png"
+                   style='width:60px'></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
